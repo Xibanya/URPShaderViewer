@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head>
+<link rel="stylesheet" type="text/css" href="https://xibanya.github.io/SRP/Styles/Style.css" id="MainStyle">
+<script src="https://xibanya.github.io/SRP/Scripts/sql-wasm.js" id="SQLScript"></script></head>
+<body><pre class="prettyprint linenums" id="viewer">
+#ifndef UNITY_DECLARE_OPAQUE_TEXTURE_INCLUDED
+#define UNITY_DECLARE_OPAQUE_TEXTURE_INCLUDED
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+TEXTURE2D_X(_CameraOpaqueTexture);
+SAMPLER(sampler_CameraOpaqueTexture);
+
+float3 <a name="SampleSceneColor">SampleSceneColor</a>(float2 uv)
+{
+    return SAMPLE_TEXTURE2D_X(_CameraOpaqueTexture, sampler_CameraOpaqueTexture, UnityStereoTransformScreenSpaceTex(uv)).rgb;
+}
+
+float3 <a name="LoadSceneColor">LoadSceneColor</a>(uint2 uv)
+{
+    return LOAD_TEXTURE2D_X(_CameraOpaqueTexture, uv).rgb;
+}
+#endif
+</pre>
+<script src="https://xibanya.github.io/SRP/Scripts/run_prettify.js?skin=vscode"></script>
+<script src="https://xibanya.github.io/SRP/Scripts/link_definitions.js"></script>
+</body></html>

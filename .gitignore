@@ -1,0 +1,6 @@
+**/TODO/
+*.db-journal
+template.html
+*.hlsl
+*.shader
+*.cs

@@ -1,0 +1,47 @@
+code.prettyprint,
+pre.prettyprint
+{ 
+  background-color:#1E1E1E; 
+  border-radius:8px
+}
+pre.prettyprint
+{
+  width:95%; 
+  margin:0.5em auto; 
+  padding:0.5em; 
+  white-space:pre-wrap;
+}
+pre .str { color: #ce9178 } /* string  */
+pre .kwd { color: #569cd6; font-weight: bold }
+pre .com { color: #6A9955 } /* comment - skyblue */
+pre .typ 
+{ 
+  color: #9cdcfe;
+} /* type    */
+pre .typ > a 
+{
+  color: #03edf9;
+  text-shadow: 0 0 2px #001716, 0 0 3px #03edf975, 0 0 5px #03edf975, 0 0 8px #03edf975; 
+}
+pre .lit { color: #b5cea8 } /* literal */
+pre .pun { color: #fff }    /* punctuation */
+pre .pln { color: #fff }    /* plaintext */
+pre .tag { color: #f0e68c; font-weight: bold } /* html/xml tag    - lightyellow */
+pre .atn { color: #bdb76b; font-weight: bold } /* attribute name  - khaki */
+pre .atv { color: #ce9178 } /* attribute value */
+pre .dec { color: #b5cea8 } /* decimal   */
+pre .dir { color: #C586C0 } /* directive   */
+pre .dir a 
+{
+  color: #f92aad;
+  text-shadow: 0 0 2px #100c0f, 0 0 5px #dc078e33, 0 0 10px #fff3;
+}
+pre a 
+{
+   color: inherit; 
+   font-size: 115%;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE } /* IE indents via margin-left */
+li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: decimal !important; }
