@@ -4,3 +4,4 @@ template.html
 *.hlsl
 *.shader
 *.cs
+*.meta
