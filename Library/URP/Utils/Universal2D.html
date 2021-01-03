@@ -1,0 +1,49 @@
+<!DOCTYPE html><html><head>
+<link rel="stylesheet" type="text/css" href="https://xibanya.github.io/URPShaderViewer/Styles/Style.css" id="MainStyle">
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/sql-wasm.js" id="SQLScript"></script></head>
+<body><pre class="prettyprint linenums" id="viewer">
+#ifndef UNIVERSAL_FALLBACK_2D_INCLUDED
+#define UNIVERSAL_FALLBACK_2D_INCLUDED
+
+struct Attributes
+{
+    float4 positionOS       : POSITION;
+    float2 uv               : TEXCOORD0;
+};
+
+struct Varyings
+{
+    float2 uv        : TEXCOORD0;
+    float4 vertex : SV_POSITION;
+};
+
+Varyings vert(Attributes input)
+{
+    Varyings output = (Varyings)0;
+
+    VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
+    output.vertex = vertexInput.positionCS;
+    output.uv = TRANSFORM_TEX(input.uv, _BaseMap);
+
+    return output;
+}
+
+half4 frag(Varyings input) : SV_Target
+{
+    half2 uv = input.uv;
+    half4 texColor = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, uv);
+    half3 color = texColor.rgb * _BaseColor.rgb;
+    half alpha = texColor.a * _BaseColor.a;
+    AlphaDiscard(alpha, _Cutoff);
+
+#ifdef _ALPHAPREMULTIPLY_ON
+    color *= alpha;
+#endif
+    return half4(color, alpha);
+}
+
+#endif
+</pre>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/run_prettify.js?skin=vscode"></script>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/link_definitions.js"></script>
+</body></html>
