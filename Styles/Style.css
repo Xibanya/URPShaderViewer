@@ -64,12 +64,12 @@ a:link { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* Directory and Prettyprint Blocks */
-.directory .linenums 
+.directory, .linenums, .subdirectory 
 { 
     margin-top: 0px; 
     color:  #6d77b3;
 }
-.directory a 
+.directory a, .subdirectory a
 {
    color: var(--type);
    font-size: 18.4px;
@@ -83,7 +83,7 @@ a:hover { text-decoration: underline; }
 div.directory p {
     padding-left: 1em;
 }
-.directory
+.directory, .subdirectory
 {
     background-color: transparent !important;
     background-image: linear-gradient(to bottom, #2a2139 75%, #34294f);
@@ -91,7 +91,12 @@ div.directory p {
     background-position: top;
     background-repeat: no-repeat;
 }
-.directory, code.prettyprint,
+.subdirectory
+{
+    margin-left:2em;
+}
+
+.directory, .subdirectory, code.prettyprint,
 pre.prettyprint
 { 
     border-radius: var(--radius);

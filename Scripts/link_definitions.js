@@ -1,4 +1,5 @@
 var DIRECTORY_CLASS = "directory";
+var SUBDIRECTORY_CLASS = "subdirectory";
 var INCLUDES_DIRECTORY_ID = "includes-group";
 var SHADER_DIRECTORY_ID = "shader-directory";
 var PRETTYPRINT_CLASS = "prettyprint";
@@ -55,8 +56,8 @@ initSqlJs({ locateFile: filename => SQL_PATH + `${filename}` }).then(function (S
             if (db != null)
             {
                 VerboseLog("Loaded DB");
-                IncludesDirectory();
-                //NestedIncludesDirectory();
+                //IncludesDirectory();
+                NestedIncludesDirectory();
                 LinkIncludes();
                 MakeLinks();
                 FindIfSource();
@@ -125,27 +126,42 @@ function GetChildDirectories(parentID)
     var dbDirectoryTable = db.exec(
         `SELECT * FROM ${DIRECTORIES_TABLE} ` + 
         `WHERE Parent = ${parentID} ORDER BY Path ASC`);
-    var table = Tableify(JSON.parse(JSON.stringify(dbDirectoryTable)));
+    var stringified = JSON.parse(JSON.stringify(dbDirectoryTable));
+    if (stringified[0] == null) return null;
+    var table = Tableify(stringified);
     return table;
 }
 
-function IterateDirectory(table, i)
+function GetParentDirectory(path)
 {
-    var row = new Group(table[i]);
-    if (i == 0) 
+    var directories = path.href.split("/");
+    var parent = "";
+    for (var i = 0; i < directories.length - 1; i++)
     {
-        lastElement = document.getElementById(row.ElementID);
-        if (lastElement == null) return;
-        var header = HeaderBefore(3, row.Name, lastElement, true);
-        var accent = document.getElementById(row.Name + "-accent");
-        InsertAfter(lastElement, accent);
+        parent += directories[i] + "/";
     }
-    else
-    {
-        var header = HeaderAfter(3, row.Name, lastElement, true);
-        var accent =  document.getElementById(row.Name + "-accent");
-        lastElement = DirectoryAfter(row.ElementID, accent);
-    }
+    return parent;
+}
+
+function InsertDirectoryLink(row, lastElement)
+{
+    var header = HeaderAfter(3, row.Name, lastElement, true);
+    var accent =  document.getElementById(row.Name + "-accent");
+    lastElement = DirectoryAfter(row.ElementID, accent);
+    return lastElement;
+}
+function InsertSubDirectoryLink(row, lastElement)
+{
+    var header = HeaderAfter(4, row.Name, lastElement, true);
+    var accent =  document.getElementById(row.Name + "-accent");
+    lastElement = DirectoryInto(row.ElementID, accent);
+    return lastElement;
+}
+
+function IterateDirectory(row, i, lastElement)
+{
+    //var parentElement = lastElement;
+    console.log(`Path: ${row.Path}`);
     var sql =  `SELECT ID, Name, URL, Extension FROM ${INCLUDES_TABLE} ` +
                 `WHERE URL IS '${row.Path}' ` +
                 `ORDER BY Name ASC`;
@@ -158,9 +174,13 @@ function IterateDirectory(table, i)
     {
         for (var n = 0; n < subTable.length; n++)
         {
-            IterateDirectory(subTable, n);
+            var subRow = new Group(subTable[n]);
+            lastElement = InsertSubDirectoryLink(subRow, lastElement);
+            //else lastElement = InsertDirectoryLink(subRow, lastElement);
+            lastElement = IterateDirectory(subRow, n, lastElement);
         }
     }
+    return lastElement;
 }
 
 function NestedIncludesDirectory()
@@ -169,7 +189,20 @@ function NestedIncludesDirectory()
     var lastElement;
     for (var i = 0; i < table.length; i ++)
     {
-        IterateDirectory(table, i);
+        var row = new Group(table[i]);
+        if (i == 0) 
+        {
+            lastElement = document.getElementById(row.ElementID);
+            if (lastElement == null) return;
+            var header = HeaderBefore(3, row.Name, lastElement, true);
+            var accent = document.getElementById(row.Name + "-accent");
+            InsertAfter(lastElement, accent);
+        }
+        else 
+        {
+            lastElement = InsertDirectoryLink(row, lastElement);
+        }
+        lastElement = IterateDirectory(row, i, lastElement);
     }
 }
 
@@ -502,6 +535,14 @@ function DirectoryAfter(uniqueID, referenceNode)
     var directory = document.createElement('div');
     directory.id = uniqueID;
     directory.className = DIRECTORY_CLASS;
+    InsertAfter(directory, referenceNode);
+    return directory;
+}
+function DirectoryInto(uniqueID, referenceNode)
+{
+    var directory = document.createElement('div');
+    directory.id = uniqueID;
+    directory.className = SUBDIRECTORY_CLASS;
     InsertAfter(directory, referenceNode);
     return directory;
 }
