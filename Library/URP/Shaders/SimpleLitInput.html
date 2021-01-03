@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head>
+<link rel="stylesheet" type="text/css" href="https://xibanya.github.io/URPShaderViewer/Styles/Style.css" id="MainStyle">
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/sql-wasm.js" id="SQLScript"></script></head>
+<body><pre class="prettyprint linenums" id="viewer">
+#ifndef UNIVERSAL_SIMPLE_LIT_INPUT_INCLUDED
+#define UNIVERSAL_SIMPLE_LIT_INPUT_INCLUDED
+
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+
+CBUFFER_START(UnityPerMaterial)
+float4 <a name="_BaseMap_ST">_BaseMap_ST</a>;
+half4 <a name="_BaseColor">_BaseColor</a>;
+half4 _SpecColor;
+half4 _EmissionColor;
+half _Cutoff;
+CBUFFER_END
+
+TEXTURE2D(_SpecGlossMap);       SAMPLER(sampler_SpecGlossMap);
+
+half4 <a name="SampleSpecularSmoothness">SampleSpecularSmoothness</a>(half2 uv, half alpha, half4 specColor, TEXTURE2D_PARAM(specMap, sampler_specMap))
+{
+    half4 specularSmoothness = half4(0.0h, 0.0h, 0.0h, 1.0h);
+#ifdef _SPECGLOSSMAP
+    specularSmoothness = SAMPLE_TEXTURE2D(specMap, sampler_specMap, uv) * specColor;
+#elif defined(_SPECULAR_COLOR)
+    specularSmoothness = specColor;
+#endif
+
+#ifdef _GLOSSINESS_FROM_BASE_ALPHA
+    specularSmoothness.a = exp2(10 * alpha + 1);
+#else
+    specularSmoothness.a = exp2(10 * specularSmoothness.a + 1);
+#endif
+
+    return specularSmoothness;
+}
+
+#endif
+</pre>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/run_prettify.js?skin=vscode"></script>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/link_definitions.js"></script>
+</body></html>

@@ -15,7 +15,7 @@ var DEFAULT_VERSION = "8.2.0";
 var isSource = false;
 var sourceName = null;
 var versionNumber = DEFAULT_VERSION;
-var BASE = "/SRP/"
+var BASE = "/URPShaderViewer/"
 
 var SCRIPTS_PATH = BASE + "Scripts/";
 
@@ -27,11 +27,11 @@ var LIBRARY_PATH = BASE + "Library/";
 var SQL_SCRIPT_ID = "SQLScript";
 var SQL_SCRIPT = "sql-wasm.js";
 var SQL_PATH = "https://kripken.github.io/sql.js/dist/";
-var DB_PATH = "https://xibanya.github.io/SRP/Data/HDRPDefinitions.db";
+var DB_PATH = "https://xibanya.github.io/URPShaderViewer/Data/URPDefinitions.db";
 var db = null;
 
 var URL_INDEX = `<a href="${BASE}"><i class="fa fa-home"></i></a>`;
-var URL_REPO = `<a href="https://github.com/Xibanya/SRP"><i class="fa fa-github"></i></a>`;
+var URL_REPO = `<a href="https://github.com/Xibanya/URPShaderViewer"><i class="fa fa-github"></i></a>`;
 var URL_T = `<a href="https://twitter.com/ManuelaXibanya"><i class="fa fa-twitter"></i></a>`;
 var URL_P = `<a href="https://www.patreon.com/teamdogpit"><i class="fa fab fa-patreon"></i></a>`;
 var EXTERNAL_LINKS = `${URL_REPO} ${URL_T} ${URL_P}`;
