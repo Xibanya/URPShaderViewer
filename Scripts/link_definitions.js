@@ -56,6 +56,7 @@ initSqlJs({ locateFile: filename => SQL_PATH + `${filename}` }).then(function (S
             {
                 VerboseLog("Loaded DB");
                 IncludesDirectory();
+                //NestedIncludesDirectory();
                 LinkIncludes();
                 MakeLinks();
                 FindIfSource();
@@ -116,6 +117,59 @@ function IncludesDirectory()
         var includesTable = Tableify(JSON.parse(JSON.stringify(includes)));
         
         GenerateDirectory(includesTable, row.ElementID, true);
+    }
+}
+
+function GetChildDirectories(parentID)
+{
+    var dbDirectoryTable = db.exec(
+        `SELECT * FROM ${DIRECTORIES_TABLE} ` + 
+        `WHERE Parent = ${parentID} ORDER BY Path ASC`);
+    var table = Tableify(JSON.parse(JSON.stringify(dbDirectoryTable)));
+    return table;
+}
+
+function IterateDirectory(table, i)
+{
+    var row = new Group(table[i]);
+    if (i == 0) 
+    {
+        lastElement = document.getElementById(row.ElementID);
+        if (lastElement == null) return;
+        var header = HeaderBefore(3, row.Name, lastElement, true);
+        var accent = document.getElementById(row.Name + "-accent");
+        InsertAfter(lastElement, accent);
+    }
+    else
+    {
+        var header = HeaderAfter(3, row.Name, lastElement, true);
+        var accent =  document.getElementById(row.Name + "-accent");
+        lastElement = DirectoryAfter(row.ElementID, accent);
+    }
+    var sql =  `SELECT ID, Name, URL, Extension FROM ${INCLUDES_TABLE} ` +
+                `WHERE URL IS '${row.Path}' ` +
+                `ORDER BY Name ASC`;
+    var includes = db.exec(sql);
+    var includesTable = Tableify(JSON.parse(JSON.stringify(includes)));
+    
+    GenerateDirectory(includesTable, row.ElementID, true);
+    var subTable = GetChildDirectories(row.ID);
+    if (subTable != null && subTable.length > 0)
+    {
+        for (var n = 0; n < subTable.length; n++)
+        {
+            IterateDirectory(subTable, n);
+        }
+    }
+}
+
+function NestedIncludesDirectory()
+{
+    var table = GetChildDirectories(0);
+    var lastElement;
+    for (var i = 0; i < table.length; i ++)
+    {
+        IterateDirectory(table, i);
     }
 }
 
