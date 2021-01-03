@@ -1,0 +1,88 @@
+<!DOCTYPE html><html><head>
+<link rel="stylesheet" type="text/css" href="https://xibanya.github.io/URPShaderViewer/Styles/Style.css" id="MainStyle">
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/sql-wasm.js" id="SQLScript"></script></head>
+<body><pre class="prettyprint linenums" id="viewer">
+#ifndef UNIVERSAL_INPUT_INCLUDED
+#define UNIVERSAL_INPUT_INCLUDED
+
+#define <a name="MAX_VISIBLE_LIGHTS_SSBO">MAX_VISIBLE_LIGHTS_SSBO</a> 256
+#define <a name="MAX_VISIBLE_LIGHTS_UBO">MAX_VISIBLE_LIGHTS_UBO</a>  32
+
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderTypes.cs.hlsl"
+
+// There are some performance issues by using SSBO in mobile.
+// Also some GPUs don't supports SSBO in vertex shader.
+#if !defined(SHADER_API_MOBILE) && (defined(SHADER_API_METAL) || defined(SHADER_API_VULKAN) || defined(SHADER_API_PS4) || defined(SHADER_API_XBOXONE))
+    #define USE_STRUCTURED_BUFFER_FOR_LIGHT_DATA 0
+    #define MAX_VISIBLE_LIGHTS MAX_VISIBLE_LIGHTS_SSBO
+// We don't use SSBO in D3D because we can't figure out without adding shader variants if platforms is D3D10.
+// We don't use SSBO on Nintendo Switch as UBO path is faster.
+// However here we use same limits as SSBO path. 
+#elif defined(SHADER_API_D3D11) || defined(SHADER_API_SWITCH)
+    #define MAX_VISIBLE_LIGHTS MAX_VISIBLE_LIGHTS_SSBO
+    #define USE_STRUCTURED_BUFFER_FOR_LIGHT_DATA 0
+// We use less limits for mobile as some mobile GPUs have small SP cache for constants
+// Using more than 32 might cause spilling to main memory.
+#else
+    #define MAX_VISIBLE_LIGHTS MAX_VISIBLE_LIGHTS_UBO
+    #define USE_STRUCTURED_BUFFER_FOR_LIGHT_DATA 0
+#endif
+
+struct <a name="InputData">InputData</a>
+{
+    float3  positionWS;
+    half3   normalWS;
+    half3   viewDirectionWS;
+    float4  shadowCoord;
+    half    fogCoord;
+    half3   vertexLighting;
+    half3   bakedGI;
+};
+
+///////////////////////////////////////////////////////////////////////////////
+//                      Constant Buffers                                     //
+///////////////////////////////////////////////////////////////////////////////
+
+half4 <a name="_GlossyEnvironmentColor">_GlossyEnvironmentColor</a>;
+half4 <a name="_SubtractiveShadowColor">_SubtractiveShadowColor</a>;
+
+float4x4 <a name="_InvCameraViewProj">_InvCameraViewProj</a>;
+float4 <a name="_ScaledScreenParams">_ScaledScreenParams</a>;
+
+float4 <a name="_MainLightPosition">_MainLightPosition</a>;
+half4 <a name="_MainLightColor">_MainLightColor</a>;
+
+half4 <a name="_AdditionalLightsCount">_AdditionalLightsCount</a>;
+#if USE_STRUCTURED_BUFFER_FOR_LIGHT_DATA
+StructuredBuffer<LightData> _AdditionalLightsBuffer;
+StructuredBuffer<int> _AdditionalLightsIndices;
+#else
+float4 <a name="_AdditionalLightsPosition">_AdditionalLightsPosition</a>[MAX_VISIBLE_LIGHTS];
+half4 <a name="_AdditionalLightsColor">_AdditionalLightsColor</a>[MAX_VISIBLE_LIGHTS];
+half4 <a name="_AdditionalLightsAttenuation">_AdditionalLightsAttenuation</a>[MAX_VISIBLE_LIGHTS];
+half4 <a name="_AdditionalLightsSpotDir">_AdditionalLightsSpotDir</a>[MAX_VISIBLE_LIGHTS];
+half4 <a name="_AdditionalLightsOcclusionProbes">_AdditionalLightsOcclusionProbes</a>[MAX_VISIBLE_LIGHTS];
+#endif
+
+#define <a name="UNITY_MATRIX_M">UNITY_MATRIX_M</a>     unity_ObjectToWorld
+#define <a name="UNITY_MATRIX_I_M">UNITY_MATRIX_I_M</a>   unity_WorldToObject
+#define <a name="UNITY_MATRIX_V">UNITY_MATRIX_V</a>     unity_MatrixV
+#define <a name="UNITY_MATRIX_I_V">UNITY_MATRIX_I_V</a>   unity_MatrixInvV
+#define <a name="UNITY_MATRIX_P">UNITY_MATRIX_P</a>     OptimizeProjectionMatrix(glstate_matrix_projection)
+#define <a name="UNITY_MATRIX_I_P">UNITY_MATRIX_I_P</a>   ERROR_UNITY_MATRIX_I_P_IS_NOT_DEFINED
+#define <a name="UNITY_MATRIX_VP">UNITY_MATRIX_VP</a>    unity_MatrixVP
+#define <a name="UNITY_MATRIX_I_VP">UNITY_MATRIX_I_VP</a>  _InvCameraViewProj
+#define <a name="UNITY_MATRIX_MV">UNITY_MATRIX_MV</a>    mul(UNITY_MATRIX_V, UNITY_MATRIX_M)
+#define <a name="UNITY_MATRIX_T_MV">UNITY_MATRIX_T_MV</a>  transpose(UNITY_MATRIX_MV)
+#define <a name="UNITY_MATRIX_IT_MV">UNITY_MATRIX_IT_MV</a> transpose(mul(UNITY_MATRIX_I_M, UNITY_MATRIX_I_V))
+#define <a name="UNITY_MATRIX_MVP">UNITY_MATRIX_MVP</a>   mul(UNITY_MATRIX_VP, UNITY_MATRIX_M)
+
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityInput.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/UnityInstancing.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/SpaceTransforms.hlsl"
+
+#endif
+</pre>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/run_prettify.js?skin=vscode"></script>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/link_definitions.js"></script>
+</body></html>
