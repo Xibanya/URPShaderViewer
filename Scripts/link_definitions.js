@@ -110,7 +110,7 @@ function IncludesDirectory()
             lastElement = DirectoryAfter(row.ElementID, accent);
         }
         var sql =  `SELECT ID, Name, URL, Extension FROM ${INCLUDES_TABLE} ` +
-                    `WHERE URL LIKE '${row.Path}%' ` +
+                    `WHERE URL IS '${row.Path}' ` +
                     `ORDER BY Name ASC`;
         var includes = db.exec(sql);
         var includesTable = Tableify(JSON.parse(JSON.stringify(includes)));
