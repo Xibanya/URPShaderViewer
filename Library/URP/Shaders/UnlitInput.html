@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head>
+<link rel="stylesheet" type="text/css" href="https://xibanya.github.io/URPShaderViewer/Styles/Style.css" id="MainStyle">
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/sql-wasm.js" id="SQLScript"></script></head>
+<body><pre class="prettyprint linenums" id="viewer">
+#ifndef UNIVERSAL_UNLIT_INPUT_INCLUDED
+#define UNIVERSAL_UNLIT_INPUT_INCLUDED
+
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+
+CBUFFER_START(UnityPerMaterial)
+float4 _BaseMap_ST;
+half4 _BaseColor;
+half _Cutoff;
+half _Glossiness;
+half _Metallic;
+CBUFFER_END
+
+#endif
+</pre>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/run_prettify.js?skin=vscode"></script>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/link_definitions.js"></script>
+</body></html>
