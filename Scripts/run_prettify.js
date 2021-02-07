@@ -28,7 +28,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
    */
-   (function(){function aa(g){function r(){try{L.doScroll("left")}catch(ba){k.setTimeout(r,50);return}x("poll")}function x(r){
+   (function()
+   {
+        function aa(g){function r(){try{L.doScroll("left")}catch(ba){k.setTimeout(r,50);return}x("poll")}function x(r){
         if("readystatechange"!=r.type||"complete"==z.readyState)("load"==r.type?k:z)[B](n+r.type,x,!1),!l&&(l=!0)&&g.call(k,r.type||r)}
         var X=z.addEventListener,l=!1,E=!0,v=X?"addEventListener":"attachEvent",B=X?"removeEventListener":"detachEvent",n=X?"":"on";
         if("complete"==z.readyState)g.call(k,"lazy");else{if(z.createEventObject&&L.doScroll){try{E=!k.frameElement}catch(ba){}E&&r()}z[v](n+
@@ -37,16 +39,35 @@
      ca(g?function(){for(var r=0;r<g;++r)(function(g){k.setTimeout(function(){k.exports[M[g]].apply(k,arguments)},0)})(r)}:void 0)})}
      for(var k=window,z=document,L=z.documentElement,N=z.head||z.getElementsByTagName("head")[0]||L,B="",F=z.getElementsByTagName("script"),l=F.length;0<=--l;){
           var O=F[l],Y=O.src.match(/^[^?#]*\/run_prettify\.js(\?[^#]*)?(?:#.*)?$/);
-          if(Y){B=Y[1]||"";
+          if(Y)
+          {
+               B=Y[1]||"";
           O.parentNode.removeChild(O);
-   break}}var U=!0,H=[],P=[],M=[];
-   B.replace(/[?&]([^&=]+)=([^&]+)/g,function(g,r,x){x=decodeURIComponent(x);r=decodeURIComponent(r);"autorun"==r?U=!/^[0fn]/i.test(x):"lang"==r?H.push(x):"skin"==r?P.push(x):"callback"==r&&M.push(x)});
-   l=0;for(B=H.length;l<B;++l)(function(){var g=z.createElement("script");g.onload=g.onerror=g.onreadystatechange=function(){!g||g.readyState&&!/loaded|complete/.test(g.readyState)||(g.onerror=g.onload=g.onreadystatechange=null,--S,S||k.setTimeout(T,0),g.parentNode&&g.parentNode.removeChild(g),
-   g=null)};g.type="text/javascript";
-   g.src="https://xibanya.github.io/ShaderTutorials/CGIncludes/code-prettify/loader/lang-"+encodeURIComponent(H[l])+".js";
-   N.insertBefore(g,N.firstChild)})(H[l]);
-   for(var S=H.length,F=[],l=0,B=P.length;l<B;++l)F.push("https://xibanya.github.io/UnityShaderViewer/Styles/"+encodeURIComponent(P[l])+".css");
-   F.push("https://xibanya.github.io/UnityShaderViewer/Styles/prettify.css");
+          break
+          }
+}
+   var U=!0,H=[],P=[],M=[];
+   B.replace(/[?&]([^&=]+)=([^&]+)/g, 
+     (g, r, x) => {
+             x = decodeURIComponent(x);
+             r = decodeURIComponent(r);
+             "autorun" == r ? U = !/^[0fn]/i.test(x) : "lang" == r ? H.push(x) : "skin" == r ? P.push(x) : "callback" == r && M.push(x);
+        });
+   l=0;for(B=H.length;l<B;++l)(() => {
+        var g = z.createElement("script");
+        g.onload = g.onerror = g.onreadystatechange = function () 
+        {
+             !g || g.readyState && !/loaded|complete/.test(g.readyState) || 
+             (g.onerror = g.onload = g.onreadystatechange = null, --S, S || k.setTimeout(T, 0), 
+             g.parentNode && g.parentNode.removeChild(g),
+                  g = null);
+        };
+        g.type = "text/javascript";
+        g.src = "https://xibanya.github.io/ShaderTutorials/CGIncludes/code-prettify/loader/lang-" + encodeURIComponent(H[l]) + ".js";
+        N.insertBefore(g, N.firstChild);
+   })(H[l]);
+   for(var S=H.length,F=[],l=0,B=P.length;l<B;++l)F.push(`../../Styles/${encodeURIComponent(P[l])}.css`);
+   F.push("../../Styles/prettify.css");
    (function(g)
      {
           function r(l)
@@ -235,7 +256,8 @@ function sourceDecorator(options)
    var Q="undefined"!==typeof window?window:{},
    FLOW_CONTROL_KEYWORDS=["break,continue,do,else,for,if,return,while"],
    K=[[FLOW_CONTROL_KEYWORDS,"auto,case,char,const,default,double,enum,extern,float,float2,float3,float4,bool4,float2x2,float3x3,float4x4," + 
-   "fixed,fixed2,fixed3,fixed4,fixed2x2,fixed3x3,fixed4x4" +
+   "fixed,fixed2,fixed3,fixed4,fixed2x2,fixed3x3,fixed4x4,real,real2,real3,real4,real2x2,real3x3,real4x4,min16float2x2,min16float2x3," +
+   "half2x3,half3x2,half3x4,half4x3,real2x3,real3x2,real3x4,real4x3,min16float,min16float2,min16float3,min16float4," +
    "goto,half,half2,half2x2,half3,half3x3,half4,half4x4,inline,int,long,register,restrict,short,signed,sizeof,static," + 
    "struct,switch,samplerCUBE,samplerCUBE_float,sampler2D_float,sampler2D,typedef,union,unsigned,void,volatile"],
    "catch,class,delete,false,import,new,operator,private,protected,public,this,throw,true,try,typeof"],
