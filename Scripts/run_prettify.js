@@ -66,8 +66,8 @@
         g.src = "https://xibanya.github.io/ShaderTutorials/CGIncludes/code-prettify/loader/lang-" + encodeURIComponent(H[l]) + ".js";
         N.insertBefore(g, N.firstChild);
    })(H[l]);
-   for(var S=H.length,F=[],l=0,B=P.length;l<B;++l)F.push(`../../Styles/${encodeURIComponent(P[l])}.css`);
-   F.push("../../Styles/prettify.css");
+   for(var S=H.length,F=[],l=0,B=P.length;l<B;++l)F.push(`https://xibanya.github.io/URPShaderViewer/Styles/${encodeURIComponent(P[l])}.css`);
+   F.push("https://xibanya.github.io/URPShaderViewer/Styles/prettify.css");
    (function(g)
      {
           function r(l)
