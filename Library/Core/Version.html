@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><head>
+<link rel="stylesheet" type="text/css" href="https://xibanya.github.io/URPShaderViewer/Styles/Style.css" id="MainStyle">
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/sql-wasm.js" id="SQLScript"></script></head>
+<body><pre class="prettyprint linenums" id="viewer">
+#define SHADER_LIBRARY_VERSION_MAJOR 10
+#define SHADER_LIBRARY_VERSION_MINOR 2
+
+#define <a name="VERSION_GREATER_EQUAL">VERSION_GREATER_EQUAL</a>(major, minor) ((SHADER_LIBRARY_VERSION_MAJOR > major) || ((SHADER_LIBRARY_VERSION_MAJOR == major) && (SHADER_LIBRARY_VERSION_MINOR >= minor)))
+#define <a name="VERSION_LOWER">VERSION_LOWER</a>(major, minor) ((SHADER_LIBRARY_VERSION_MAJOR < major) || ((SHADER_LIBRARY_VERSION_MAJOR == major) && (SHADER_LIBRARY_VERSION_MINOR < minor)))
+#define <a name="VERSION_EQUAL">VERSION_EQUAL</a>(major, minor) ((SHADER_LIBRARY_VERSION_MAJOR == major) && (SHADER_LIBRARY_VERSION_MINOR == minor))
+</pre>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/run_prettify.js?skin=vscode"></script>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/link_definitions.js"></script>
+</body></html>
