@@ -1,0 +1,26 @@
+// Wrapper vertex invocations for VFX. Necesarry to work around various null input geometry issues for vertex input layout on DX12 and Vulkan.
+<!DOCTYPE html><html><head>
+    <link rel="stylesheet" type="text/css" href="https://xibanya.github.io/URPShaderViewer/Styles/Style.css" id="MainStyle">
+    <script src="https://xibanya.github.io/URPShaderViewer/Scripts/sql-wasm.js" id="SQLScript"></script></head>
+    <body><pre class="prettyprint linenums" id="viewer">
+#if NULL_GEOMETRY_INPUT
+PackedVaryings <a name="VertVFX">VertVFX</a>(uint vertexID : VERTEXID_SEMANTIC, uint instanceID : INSTANCEID_SEMANTIC)
+{
+    Attributes input;
+    ZERO_INITIALIZE(Attributes, input);
+
+    input.vertexID = vertexID;
+    input.instanceID = instanceID;
+
+    return vert(input);
+}
+#else
+PackedVaryings VertVFX(Attributes input)
+{
+    return vert(input);
+}
+#endif
+</pre>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/run_prettify.js?skin=vscode"></script>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/link_definitions.js"></script>
+</body></html>

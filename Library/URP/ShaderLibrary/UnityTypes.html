@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head>
+    <link rel="stylesheet" type="text/css" href="https://xibanya.github.io/URPShaderViewer/Styles/Style.css" id="MainStyle">
+    <script src="https://xibanya.github.io/URPShaderViewer/Scripts/sql-wasm.js" id="SQLScript"></script></head>
+    <body><pre class="prettyprint linenums" id="viewer">
+#ifndef UNIVERSAL_UNITY_TYPES_HLSL
+#define UNIVERSAL_UNITY_TYPES_HLSL
+
+// Match  UnityEngine.TextureWrapMode
+#define <a name="URP_TEXTURE_WRAP_MODE_REPEAT">URP_TEXTURE_WRAP_MODE_REPEAT</a>       0
+#define <a name="URP_TEXTURE_WRAP_MODE_CLAMP">URP_TEXTURE_WRAP_MODE_CLAMP</a>        1
+#define <a name="URP_TEXTURE_WRAP_MODE_MIRROR">URP_TEXTURE_WRAP_MODE_MIRROR</a>       2
+#define <a name="URP_TEXTURE_WRAP_MODE_MIRROR_ONCE">URP_TEXTURE_WRAP_MODE_MIRROR_ONCE</a>  3
+// Additional NULL case for shaders
+#define <a name="URP_TEXTURE_WRAP_MODE_NONE">URP_TEXTURE_WRAP_MODE_NONE</a>        -1
+
+// Match  UnityEngine.LightType
+#define <a name="URP_LIGHT_TYPE_SPOT">URP_LIGHT_TYPE_SPOT</a>        0
+#define <a name="URP_LIGHT_TYPE_DIRECTIONAL">URP_LIGHT_TYPE_DIRECTIONAL</a> 1
+#define <a name="URP_LIGHT_TYPE_POINT">URP_LIGHT_TYPE_POINT</a>       2
+// Area and Rectangle are aliases
+#define <a name="URP_LIGHT_TYPE_AREA">URP_LIGHT_TYPE_AREA</a>        3
+#define <a name="URP_LIGHT_TYPE_RECTANGLE">URP_LIGHT_TYPE_RECTANGLE</a>   3
+#define <a name="URP_LIGHT_TYPE_DISC">URP_LIGHT_TYPE_DISC</a>        4
+
+#endif //UNIVERSAL_UNITY_TYPES_HLSL
+</pre>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/run_prettify.js?skin=vscode"></script>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/link_definitions.js"></script>
+</body></html>
