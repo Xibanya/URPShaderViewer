@@ -2,32 +2,31 @@
     <link rel="stylesheet" type="text/css" href="https://xibanya.github.io/URPShaderViewer/Styles/Style.css" id="MainStyle">
     <script src="https://xibanya.github.io/URPShaderViewer/Scripts/sql-wasm.js" id="SQLScript"></script></head>
     <body><pre class="prettyprint linenums" id="viewer">
-        #ifndef TERRAIN_LIT_META_PASS_INCLUDED
-        #define TERRAIN_LIT_META_PASS_INCLUDED
-        #define _BaseMap_ST _MainTex_ST
-        #include "Packages/com.unity.render-pipelines.universal/Shaders/LitMetaPass.hlsl"
-        
-        Varyings TerrainVertexMeta(Attributes input)
-        {
-            Varyings output;
-            UNITY_SETUP_INSTANCE_ID(input);
-            TerrainInstancing(input.positionOS, input.normalOS, input.uv0);
-            // For some reason, uv1 and uv2 are not populated for instanced terrain. Use uv0.
-            input.uv1 = input.uv2 = input.uv0;
-            output = UniversalVertexMeta(input);
-            return output;
-        }
-        
-        half4 TerrainFragmentMeta(Varyings input) : SV_Target
-        {
-        #ifdef _ALPHATEST_ON
-            ClipHoles(input.uv);
-        #endif
-            return UniversalFragmentMetaLit(input);
-        }
-        
-        #endif
-                   
+#ifndef TERRAIN_LIT_META_PASS_INCLUDED
+#define TERRAIN_LIT_META_PASS_INCLUDED
+#define _BaseMap_ST _MainTex_ST
+#include "Packages/com.unity.render-pipelines.universal/Shaders/LitMetaPass.hlsl"
+
+Varyings TerrainVertexMeta(Attributes input)
+{
+    Varyings output;
+    UNITY_SETUP_INSTANCE_ID(input);
+    TerrainInstancing(input.positionOS, input.normalOS, input.uv0);
+    // For some reason, uv1 and uv2 are not populated for instanced terrain. Use uv0.
+    input.uv1 = input.uv2 = input.uv0;
+    output = UniversalVertexMeta(input);
+    return output;
+}
+
+half4 TerrainFragmentMeta(Varyings input) : SV_Target
+{
+#ifdef _ALPHATEST_ON
+    ClipHoles(input.uv);
+#endif
+    return UniversalFragmentMetaLit(input);
+}
+
+#endif         
     </pre>
     <script src="https://xibanya.github.io/URPShaderViewer/Scripts/run_prettify.js?skin=vscode"></script>
     <script src="https://xibanya.github.io/URPShaderViewer/Scripts/link_definitions.js"></script>
