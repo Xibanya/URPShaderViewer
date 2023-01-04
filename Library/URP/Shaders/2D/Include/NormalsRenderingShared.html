@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head>
+    <link rel="stylesheet" type="text/css" href="https://xibanya.github.io/URPShaderViewer/Styles/Style.css" id="MainStyle">
+    <script src="https://xibanya.github.io/URPShaderViewer/Scripts/sql-wasm.js" id="SQLScript"></script></head>
+    <body><pre class="prettyprint linenums" id="viewer">
+#if !defined(NORMALS_RENDERING_PASS)
+#define NORMALS_RENDERING_PASS
+
+half4 <a name="NormalsRenderingShared">NormalsRenderingShared</a>(half4 color, half3 normalTS, half3 tangent, half3 bitangent, half3 normal)
+{
+    half4 normalColor;
+    half3 normalWS = TransformTangentToWorld(normalTS, half3x3(tangent.xyz, bitangent.xyz, normal.xyz));
+
+    normalColor.rgb = 0.5 * ((normalWS)+1);
+    normalColor.a = color.a;  // used for blending
+
+    return normalColor;
+}
+
+
+#endif
+</pre>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/run_prettify.js?skin=vscode"></script>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/link_definitions.js"></script>
+</body></html>

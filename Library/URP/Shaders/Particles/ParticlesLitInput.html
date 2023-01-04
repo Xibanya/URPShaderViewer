@@ -29,8 +29,8 @@ CBUFFER_END
 
 TEXTURE2D(_MetallicGlossMap);   SAMPLER(sampler_MetallicGlossMap);
 
-#define SOFT_PARTICLE_NEAR_FADE _SoftParticleFadeParams.x
-#define SOFT_PARTICLE_INV_FADE_DISTANCE _SoftParticleFadeParams.y
+#define <a name="SOFT_PARTICLE_NEAR_FADE">SOFT_PARTICLE_NEAR_FADE</a> _SoftParticleFadeParams.x
+#define <a name="SOFT_PARTICLE_INV_FADE_DISTANCE">SOFT_PARTICLE_INV_FADE_DISTANCE</a> _SoftParticleFadeParams.y
 
 #define CAMERA_NEAR_FADE _CameraFadeParams.x
 #define CAMERA_INV_FADE_DISTANCE _CameraFadeParams.y
@@ -90,7 +90,7 @@ half4 SampleAlbedo(TEXTURE2D_PARAM(albedoMap, sampler_albedoMap), ParticleParams
     return albedo;
 }
 
-inline void InitializeParticleLitSurfaceData(float2 uv, float3 blendUv, float4 particleColor, float4 projectedPosition, out SurfaceData outSurfaceData)
+inline void <a name="InitializeParticleLitSurfaceData">InitializeParticleLitSurfaceData</a>(float2 uv, float3 blendUv, float4 particleColor, float4 projectedPosition, out SurfaceData outSurfaceData)
 {
     half4 albedo = SampleAlbedo(uv, blendUv, _BaseColor, particleColor, projectedPosition, TEXTURE2D_ARGS(_BaseMap, sampler_BaseMap));
 
@@ -128,7 +128,7 @@ inline void InitializeParticleLitSurfaceData(float2 uv, float3 blendUv, float4 p
     outSurfaceData.clearCoatSmoothness = half(1.0);
 }
 
-inline void InitializeParticleLitSurfaceData(ParticleParams params, out SurfaceData outSurfaceData)
+inline void <a name="InitializeParticleLitSurfaceData">InitializeParticleLitSurfaceData</a>(ParticleParams params, out SurfaceData outSurfaceData)
 {
     half4 albedo = SampleAlbedo(TEXTURE2D_ARGS(_BaseMap, sampler_BaseMap), params);
 

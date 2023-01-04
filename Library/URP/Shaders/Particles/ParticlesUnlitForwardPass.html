@@ -76,7 +76,7 @@ void InitializeSurfaceData(ParticleParams particleParams, out SurfaceData surfac
 //                  Vertex and Fragment functions                            //
 ///////////////////////////////////////////////////////////////////////////////
 
-VaryingsParticle vertParticleUnlit(AttributesParticle input)
+VaryingsParticle <a name="vertParticleUnlit">vertParticleUnlit</a>(AttributesParticle input)
 {
     VaryingsParticle output = (VaryingsParticle)0;
 
@@ -126,7 +126,7 @@ VaryingsParticle vertParticleUnlit(AttributesParticle input)
     return output;
 }
 
-half4 fragParticleUnlit(VaryingsParticle input) : SV_Target
+half4 <a name="fragParticleUnlit">fragParticleUnlit</a>(VaryingsParticle input) : SV_Target
 {
     UNITY_SETUP_INSTANCE_ID(input);
     UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);

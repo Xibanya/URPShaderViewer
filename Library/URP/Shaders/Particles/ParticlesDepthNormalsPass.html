@@ -7,7 +7,7 @@
 
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-VaryingsDepthNormalsParticle DepthNormalsVertex(AttributesDepthNormalsParticle input)
+VaryingsDepthNormalsParticle <a name="DepthNormalsVertex">DepthNormalsVertex</a>(AttributesDepthNormalsParticle input)
 {
     VaryingsDepthNormalsParticle output = (VaryingsDepthNormalsParticle)0;
     UNITY_SETUP_INSTANCE_ID(input);
@@ -49,7 +49,7 @@ VaryingsDepthNormalsParticle DepthNormalsVertex(AttributesDepthNormalsParticle i
     return output;
 }
 
-half4 DepthNormalsFragment(VaryingsDepthNormalsParticle input) : SV_TARGET
+half4 <a name="DepthNormalsFragment">DepthNormalsFragment</a>(VaryingsDepthNormalsParticle input) : SV_TARGET
 {
     UNITY_SETUP_INSTANCE_ID(input);
     UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);

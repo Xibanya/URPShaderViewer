@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head>
+    <link rel="stylesheet" type="text/css" href="https://xibanya.github.io/URPShaderViewer/Styles/Style.css" id="MainStyle">
+    <script src="https://xibanya.github.io/URPShaderViewer/Scripts/sql-wasm.js" id="SQLScript"></script></head>
+    <body><pre class="prettyprint linenums" id="viewer">
+#ifndef INPUT_DATA_2D_INCLUDED
+#define INPUT_DATA_2D_INCLUDED
+
+struct <a name="InputData2D">InputData2D</a>
+{
+    float2 uv;
+    half2 lightingUV;
+
+    #if defined(DEBUG_DISPLAY)
+    float3 positionWS;
+    float4 texelSize;
+    float4 mipInfo;
+    uint mipCount;
+    #endif
+};
+
+void InitializeInputData(float2 uv, half2 lightingUV, out InputData2D inputData)
+{
+    inputData = (InputData2D)0;
+
+    inputData.uv = uv;
+    inputData.lightingUV = lightingUV;
+}
+
+void InitializeInputData(float2 uv, out InputData2D inputData)
+{
+    InitializeInputData(uv, 0, inputData);
+}
+
+#endif
+</pre>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/run_prettify.js?skin=vscode"></script>
+<script src="https://xibanya.github.io/URPShaderViewer/Scripts/link_definitions.js"></script>
+</body></html>

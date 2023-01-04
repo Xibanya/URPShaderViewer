@@ -7,7 +7,7 @@
 
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
-struct AttributesParticle
+struct <a name="AttributesParticle">AttributesParticle</a>
 {
     float4 positionOS               : POSITION;
     half4 color                     : COLOR;
@@ -63,7 +63,7 @@ struct VaryingsParticle
     UNITY_VERTEX_OUTPUT_STEREO
 };
 
-struct AttributesDepthOnlyParticle
+struct <a name="AttributesDepthOnlyParticle">AttributesDepthOnlyParticle</a>
 {
     float4 vertex                       : POSITION;
 
@@ -80,7 +80,7 @@ struct AttributesDepthOnlyParticle
     UNITY_VERTEX_INPUT_INSTANCE_ID
 };
 
-struct VaryingsDepthOnlyParticle
+struct <a name="VaryingsDepthOnlyParticle">VaryingsDepthOnlyParticle</a>
 {
     float4 clipPos                      : SV_POSITION;
 
@@ -97,7 +97,7 @@ struct VaryingsDepthOnlyParticle
     UNITY_VERTEX_OUTPUT_STEREO
 };
 
-struct AttributesDepthNormalsParticle
+struct <a name="AttributesDepthNormalsParticle">AttributesDepthNormalsParticle</a>
 {
     float4 vertex                       : POSITION;
 
@@ -121,7 +121,7 @@ struct AttributesDepthNormalsParticle
 };
 
 
-struct VaryingsDepthNormalsParticle
+struct <a name="VaryingsDepthNormalsParticle">VaryingsDepthNormalsParticle</a>
 {
     float4 clipPos                      : SV_POSITION;
 

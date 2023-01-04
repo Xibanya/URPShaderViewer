@@ -86,7 +86,7 @@ UNITY_INSTANCING_BUFFER_END(Terrain)
 TEXTURE2D(_TerrainHolesTexture);
 SAMPLER(sampler_TerrainHolesTexture);
 
-void ClipHoles(float2 uv)
+void <a name="ClipHoles">ClipHoles</a>(float2 uv)
 {
     float hole = SAMPLE_TEXTURE2D(_TerrainHolesTexture, sampler_TerrainHolesTexture, uv).r;
     clip(hole == 0.0f ? -1 : 1);
@@ -120,7 +120,7 @@ inline void InitializeStandardLitSurfaceData(float2 uv, out SurfaceData outSurfa
 }
 
 
-void TerrainInstancing(inout float4 positionOS, inout float3 normal, inout float2 uv)
+void <a name="TerrainInstancing">TerrainInstancing</a>(inout float4 positionOS, inout float3 normal, inout float2 uv)
 {
 #ifdef UNITY_INSTANCING_ENABLED
     float2 patchVertex = positionOS.xy;

@@ -55,7 +55,7 @@ void InitializeInputData(VaryingsParticle input, half3 normalTS, out InputData i
 //                  Vertex and Fragment functions                            //
 ///////////////////////////////////////////////////////////////////////////////
 
-VaryingsParticle ParticlesGBufferVertex(AttributesParticle input)
+VaryingsParticle <a name="ParticlesGBufferVertex">ParticlesGBufferVertex</a>(AttributesParticle input)
 {
     VaryingsParticle output = (VaryingsParticle)0;
 
@@ -101,7 +101,7 @@ VaryingsParticle ParticlesGBufferVertex(AttributesParticle input)
     return output;
 }
 
-FragmentOutput ParticlesGBufferFragment(VaryingsParticle input)
+FragmentOutput <a name="ParticlesGBufferFragment">ParticlesGBufferFragment</a>(VaryingsParticle input)
 {
     UNITY_SETUP_INSTANCE_ID(input);
     UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);

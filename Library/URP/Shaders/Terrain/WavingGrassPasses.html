@@ -9,7 +9,7 @@
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderVariablesFunctions.hlsl"
 
-struct GrassVertexInput
+struct <a name="GrassVertexInput">GrassVertexInput</a>
 {
     float4 vertex       : POSITION;
     float3 normal       : NORMAL;
@@ -20,7 +20,7 @@ struct GrassVertexInput
     UNITY_VERTEX_INPUT_INSTANCE_ID
 };
 
-struct GrassVertexOutput
+struct <a name="GrassVertexOutput">GrassVertexOutput</a>
 {
     float2 uv                       : TEXCOORD0;
     DECLARE_LIGHTMAP_OR_SH(lightmapUV, vertexSH, 1);
@@ -144,7 +144,7 @@ void InitializeVertData(GrassVertexInput input, inout GrassVertexOutput vertData
 // texcoord     - UV coords
 // texcoord1    - 2nd UV coords
 
-GrassVertexOutput WavingGrassVert(GrassVertexInput v)
+GrassVertexOutput <a name="WavingGrassVert">WavingGrassVert</a>(GrassVertexInput v)
 {
     GrassVertexOutput o = (GrassVertexOutput)0;
     UNITY_SETUP_INSTANCE_ID(v);
@@ -161,7 +161,7 @@ GrassVertexOutput WavingGrassVert(GrassVertexInput v)
     return o;
 }
 
-GrassVertexOutput WavingGrassBillboardVert(GrassVertexInput v)
+GrassVertexOutput <a name="WavingGrassBillboardVert">WavingGrassBillboardVert</a>(GrassVertexInput v)
 {
     GrassVertexOutput o = (GrassVertexOutput)0;
     UNITY_SETUP_INSTANCE_ID(v);
@@ -200,7 +200,7 @@ inline void InitializeSimpleLitSurfaceData(GrassVertexOutput input, out SurfaceD
 
 // Used for StandardSimpleLighting shader
 #ifdef TERRAIN_GBUFFER
-FragmentOutput LitPassFragmentGrass(GrassVertexOutput input)
+FragmentOutput <a name="LitPassFragmentGrass">LitPassFragmentGrass</a>(GrassVertexOutput input)
 #else
 half4 LitPassFragmentGrass(GrassVertexOutput input) : SV_Target
 #endif
@@ -225,7 +225,7 @@ half4 LitPassFragmentGrass(GrassVertexOutput input) : SV_Target
 #endif
 };
 
-struct GrassVertexDepthOnlyInput
+struct <a name="GrassVertexDepthOnlyInput">GrassVertexDepthOnlyInput</a>
 {
     float4 vertex       : POSITION;
     float4 tangent      : TANGENT;
@@ -234,7 +234,7 @@ struct GrassVertexDepthOnlyInput
     UNITY_VERTEX_INPUT_INSTANCE_ID
 };
 
-struct GrassVertexDepthOnlyOutput
+struct <a name="GrassVertexDepthOnlyOutput">GrassVertexDepthOnlyOutput</a>
 {
     float2 uv           : TEXCOORD0;
     half4 color         : TEXCOORD1;

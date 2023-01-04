@@ -38,7 +38,7 @@ float4 _MainTex_MipInfo;
 // val:     the 4 input values - each must be in the range (0 to 1)
 // s:       The sine of each of the 4 values
 // c:       The cosine of each of the 4 values
-void FastSinCos (float4 val, out float4 s, out float4 c) {
+void <a name="FastSinCos">FastSinCos</a> (float4 val, out float4 s, out float4 c) {
     val = val * 6.408849 - 3.1415927;
     // powers for taylor series
     float4 r5 = val * val;                  // wavevec ^ 2
@@ -62,7 +62,7 @@ void FastSinCos (float4 val, out float4 s, out float4 c) {
     c = 1 + r5 * cos8.x + r6 * cos8.y + r7 * cos8.z + r8 * cos8.w;
 }
 
-half4 TerrainWaveGrass (inout float4 vertex, float waveAmount, half4 color)
+half4 <a name="TerrainWaveGrass">TerrainWaveGrass</a> (inout float4 vertex, float waveAmount, half4 color)
 {
     half4 _waveXSize = half4(0.012, 0.02, 0.06, 0.024) * _WaveAndDistance.y;
     half4 _waveZSize = half4 (0.006, .02, 0.02, 0.05) * _WaveAndDistance.y;
@@ -107,7 +107,7 @@ half4 TerrainWaveGrass (inout float4 vertex, float waveAmount, half4 color)
     return half4(2 * waveColor * color.rgb, color.a);
 }
 
-void TerrainBillboardGrass( inout float4 pos, float2 offset )
+void <a name="TerrainBillboardGrass">TerrainBillboardGrass</a>( inout float4 pos, float2 offset )
 {
     float3 grasspos = pos.xyz - _CameraPosition.xyz;
     if (dot(grasspos, grasspos) > _WaveAndDistance.w)

@@ -5,7 +5,7 @@
 #ifndef UNIVERSAL_SPEEDTREE7BILLBOARD_INPUT_INCLUDED
 #define UNIVERSAL_SPEEDTREE7BILLBOARD_INPUT_INCLUDED
 
-#define SPEEDTREE_PI 3.14159265359
+#define <a name="SPEEDTREE_PI">SPEEDTREE_PI</a> 3.14159265359
 
 #define SPEEDTREE_ALPHATEST
 half _Cutoff;
@@ -21,8 +21,8 @@ float4 unity_BillboardCameraParams;
 CBUFFER_END
 
 CBUFFER_START(UnityBillboardPerBatch)
-float4 unity_BillboardInfo; // x: num of billboard slices; y: 1.0f / (delta angle between slices)
-float4 unity_BillboardSize; // x: width; y: height; z: bottom
+float4 <a name="unity_BillboardInfo">unity_BillboardInfo</a>; // x: num of billboard slices; y: 1.0f / (delta angle between slices)
+float4 <a name="unity_BillboardSize">unity_BillboardSize</a>; // x: width; y: height; z: bottom
 float4 unity_BillboardImageTexCoords[16];
 CBUFFER_END
 

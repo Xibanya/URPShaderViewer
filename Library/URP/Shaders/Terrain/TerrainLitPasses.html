@@ -119,7 +119,7 @@ void InitializeInputData(Varyings IN, half3 normalTS, out InputData inputData)
 
 #ifndef TERRAIN_SPLAT_BASEPASS
 
-void NormalMapMix(float4 uvSplat01, float4 uvSplat23, inout half4 splatControl, inout half3 mixedNormal)
+void <a name="NormalMapMix">NormalMapMix</a>(float4 uvSplat01, float4 uvSplat23, inout half4 splatControl, inout half3 mixedNormal)
 {
     #if defined(_NORMALMAP)
         half3 nrm = half(0.0);
@@ -139,7 +139,7 @@ void NormalMapMix(float4 uvSplat01, float4 uvSplat23, inout half4 splatControl, 
     #endif
 }
 
-void SplatmapMix(float4 uvMainAndLM, float4 uvSplat01, float4 uvSplat23, inout half4 splatControl, out half weight, out half4 mixedDiffuse, out half4 defaultSmoothness, inout half3 mixedNormal)
+void <a name="SplatmapMix">SplatmapMix</a>(float4 uvMainAndLM, float4 uvSplat01, float4 uvSplat23, inout half4 splatControl, out half weight, out half4 mixedDiffuse, out half4 defaultSmoothness, inout half3 mixedNormal)
 {
     half4 diffAlbedo[4];
 
@@ -192,7 +192,7 @@ void SplatmapMix(float4 uvMainAndLM, float4 uvSplat01, float4 uvSplat23, inout h
 #endif
 
 #ifdef _TERRAIN_BLEND_HEIGHT
-void HeightBasedSplatModify(inout half4 splatControl, in half4 masks[4])
+void <a name="HeightBasedSplatModify">HeightBasedSplatModify</a>(inout half4 splatControl, in half4 masks[4])
 {
     // heights are in mask blue channel, we multiply by the splat Control weights to get combined height
     half4 splatHeight = half4(masks[0].b, masks[1].b, masks[2].b, masks[3].b) * splatControl.rgba;
@@ -216,7 +216,7 @@ void HeightBasedSplatModify(inout half4 splatControl, in half4 masks[4])
 }
 #endif
 
-void SplatmapFinalColor(inout half4 color, half fogCoord)
+void <a name="SplatmapFinalColor">SplatmapFinalColor</a>(inout half4 color, half fogCoord)
 {
     color.rgb *= color.a;
 
@@ -236,7 +236,7 @@ void SplatmapFinalColor(inout half4 color, half fogCoord)
 ///////////////////////////////////////////////////////////////////////////////
 
 // Used in Standard Terrain shader
-Varyings SplatmapVert(Attributes v)
+Varyings <a name="SplatmapVert">SplatmapVert</a>(Attributes v)
 {
     Varyings o = (Varyings)0;
 
@@ -295,7 +295,7 @@ Varyings SplatmapVert(Attributes v)
     return o;
 }
 
-void ComputeMasks(out half4 masks[4], half4 hasMask, Varyings IN)
+void <a name="ComputeMasks">ComputeMasks</a>(out half4 masks[4], half4 hasMask, Varyings IN)
 {
     masks[0] = 0.5h;
     masks[1] = 0.5h;
@@ -321,7 +321,7 @@ void ComputeMasks(out half4 masks[4], half4 hasMask, Varyings IN)
 
 // Used in Standard Terrain shader
 #ifdef TERRAIN_GBUFFER
-FragmentOutput SplatmapFragment(Varyings IN)
+FragmentOutput <a name="SplatmapFragment">SplatmapFragment</a>(Varyings IN)
 #else
 half4 SplatmapFragment(Varyings IN) : SV_TARGET
 #endif
@@ -435,7 +435,7 @@ half4 SplatmapFragment(Varyings IN) : SV_TARGET
 float3 _LightDirection;
 float3 _LightPosition;
 
-struct AttributesLean
+struct <a name="AttributesLean">AttributesLean</a>
 {
     float4 position     : POSITION;
     float3 normalOS       : NORMAL;
@@ -443,7 +443,7 @@ struct AttributesLean
     UNITY_VERTEX_INPUT_INSTANCE_ID
 };
 
-struct VaryingsLean
+struct <a name="VaryingsLean">VaryingsLean</a>
 {
     float4 clipPos      : SV_POSITION;
     float2 texcoord     : TEXCOORD0;

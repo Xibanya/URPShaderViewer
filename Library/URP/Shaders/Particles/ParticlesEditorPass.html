@@ -18,7 +18,7 @@ float4 _SelectionID;
 //                  Vertex and Fragment functions                            //
 ///////////////////////////////////////////////////////////////////////////////
 
-VaryingsParticle vertParticleEditor(AttributesParticle input)
+VaryingsParticle <a name="vertParticleEditor">vertParticleEditor</a>(AttributesParticle input)
 {
     VaryingsParticle output = (VaryingsParticle)0;
 
@@ -40,7 +40,7 @@ VaryingsParticle vertParticleEditor(AttributesParticle input)
     return output;
 }
 
-void fragParticleSceneClip(VaryingsParticle input)
+void <a name="fragParticleSceneClip">fragParticleSceneClip</a>(VaryingsParticle input)
 {
     UNITY_SETUP_INSTANCE_ID(input);
     UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
