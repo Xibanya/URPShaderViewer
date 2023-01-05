@@ -159,8 +159,8 @@ struct <a name="UnityTextureCube">UnityTextureCube</a>
 float4 <a name="texCUBE">texCUBE</a>(UnityTextureCube tex, float3 dir)                        { return SAMPLE_TEXTURECUBE(tex.tex, tex.samplerstate, dir); }
 float4 <a name="texCUBEbias">texCUBEbias</a>(UnityTextureCube tex, float4 dirBias)                { return SAMPLE_TEXTURECUBE_BIAS(tex.tex, tex.samplerstate, dirBias.xyz, dirBias.w); }
 
-#define UnityBuildTextureCubeStruct(n) UnityBuildTextureCubeStructInternal(TEXTURECUBE_ARGS(n, sampler##n))
-UnityTextureCube UnityBuildTextureCubeStructInternal(TEXTURECUBE_PARAM(tex, samplerstate))
+#define <a name="UnityBuildTextureCubeStruct">UnityBuildTextureCubeStruct</a>(n) UnityBuildTextureCubeStructInternal(TEXTURECUBE_ARGS(n, sampler##n))
+UnityTextureCube <a name="UnityBuildTextureCubeStructInternal">UnityBuildTextureCubeStructInternal</a>(TEXTURECUBE_PARAM(tex, samplerstate))
 {
     UnityTextureCube result;
     result.tex = tex;

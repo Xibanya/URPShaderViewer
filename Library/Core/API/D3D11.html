@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="https://xibanya.github.io/URPShaderViewer/Styles/Style.css" id="MainStyle">
 <script src="https://xibanya.github.io/URPShaderViewer/Scripts/sql-wasm.js" id="SQLScript"></script></head>
 <body><pre class="prettyprint linenums" id="viewer">
-// This file assume SHADER_API_D3D11 is defined
+// This file assume <a name="SHADER_API_D3D11">SHADER_API_D3D11</a> is defined
 
 #define <a name="UNITY_UV_STARTS_AT_TOP">UNITY_UV_STARTS_AT_TOP</a> 1
 #define <a name="UNITY_REVERSED_Z">UNITY_REVERSED_Z</a> 1
@@ -18,17 +18,17 @@
 #define <a name="CBUFFER_START">CBUFFER_START</a>(name) cbuffer name {
 #define <a name="CBUFFER_END">CBUFFER_END</a> };
 
-#define PLATFORM_SUPPORTS_EXPLICIT_BINDING
-#define PLATFORM_NEEDS_UNORM_UAV_SPECIFIER
-#define PLATFORM_SUPPORTS_BUFFER_ATOMICS_IN_PIXEL_SHADER
-#define PLATFORM_SUPPORTS_PRIMITIVE_ID_IN_PIXEL_SHADER
+#define <a name="PLATFORM_SUPPORTS_EXPLICIT_BINDING">PLATFORM_SUPPORTS_EXPLICIT_BINDING</a>
+#define <a name="PLATFORM_NEEDS_UNORM_UAV_SPECIFIER">PLATFORM_NEEDS_UNORM_UAV_SPECIFIER</a>
+#define <a name="PLATFORM_SUPPORTS_BUFFER_ATOMICS_IN_PIXEL_SHADER">PLATFORM_SUPPORTS_BUFFER_ATOMICS_IN_PIXEL_SHADER</a>
+#define <a name="PLATFORM_SUPPORTS_PRIMITIVE_ID_IN_PIXEL_SHADER">PLATFORM_SUPPORTS_PRIMITIVE_ID_IN_PIXEL_SHADER</a>
 
 
 // flow control attributes
 #define <a name="UNITY_BRANCH">UNITY_BRANCH</a>        [branch]
 #define <a name="UNITY_FLATTEN">UNITY_FLATTEN</a>       [flatten]
 #define <a name="UNITY_UNROLL">UNITY_UNROLL</a>        [unroll]
-#define UNITY_UNROLLX(_x)   [unroll(_x)]
+#define <a name="UNITY_UNROLLX">UNITY_UNROLLX</a>(_x)   [unroll(_x)]
 #define <a name="UNITY_LOOP">UNITY_LOOP</a>          [loop]
 
 // Initialize arbitrary structure with zero values.
@@ -48,96 +48,96 @@
 #define <a name="TEXTURECUBE_ARRAY">TEXTURECUBE_ARRAY</a>(textureName)        TextureCubeArray textureName
 #define <a name="TEXTURE3D">TEXTURE3D</a>(textureName)                Texture3D textureName
 
-#define TEXTURE2D_FLOAT(textureName)          TEXTURE2D(textureName)
-#define TEXTURE2D_ARRAY_FLOAT(textureName)    TEXTURE2D_ARRAY(textureName)
-#define TEXTURECUBE_FLOAT(textureName)        TEXTURECUBE(textureName)
-#define TEXTURECUBE_ARRAY_FLOAT(textureName)  TEXTURECUBE_ARRAY(textureName)
-#define TEXTURE3D_FLOAT(textureName)          TEXTURE3D(textureName)
+#define <a name="TEXTURE2D_FLOAT">TEXTURE2D_FLOAT</a>(textureName)          TEXTURE2D(textureName)
+#define <a name="TEXTURE2D_ARRAY_FLOAT">TEXTURE2D_ARRAY_FLOAT</a>(textureName)    TEXTURE2D_ARRAY(textureName)
+#define <a name="TEXTURECUBE_FLOAT">TEXTURECUBE_FLOAT</a>(textureName)        TEXTURECUBE(textureName)
+#define <a name="TEXTURECUBE_ARRAY_FLOAT">TEXTURECUBE_ARRAY_FLOAT</a>(textureName)  TEXTURECUBE_ARRAY(textureName)
+#define <a name="TEXTURE3D_FLOAT">TEXTURE3D_FLOAT</a>(textureName)          TEXTURE3D(textureName)
 
-#define TEXTURE2D_HALF(textureName)           TEXTURE2D(textureName)
-#define TEXTURE2D_ARRAY_HALF(textureName)     TEXTURE2D_ARRAY(textureName)
-#define TEXTURECUBE_HALF(textureName)         TEXTURECUBE(textureName)
-#define TEXTURECUBE_ARRAY_HALF(textureName)   TEXTURECUBE_ARRAY(textureName)
-#define TEXTURE3D_HALF(textureName)           TEXTURE3D(textureName)
+#define <a name="TEXTURE2D_HALF">TEXTURE2D_HALF</a>(textureName)           TEXTURE2D(textureName)
+#define <a name="TEXTURE2D_ARRAY_HALF">TEXTURE2D_ARRAY_HALF</a>(textureName)     TEXTURE2D_ARRAY(textureName)
+#define <a name="TEXTURECUBE_HALF">TEXTURECUBE_HALF</a>(textureName)         TEXTURECUBE(textureName)
+#define <a name="TEXTURECUBE_ARRAY_HALF">TEXTURECUBE_ARRAY_HALF</a>(textureName)   TEXTURECUBE_ARRAY(textureName)
+#define <a name="TEXTURE3D_HALF">TEXTURE3D_HALF</a>(textureName)           TEXTURE3D(textureName)
 
-#define TEXTURE2D_SHADOW(textureName)         TEXTURE2D(textureName)
-#define TEXTURE2D_ARRAY_SHADOW(textureName)   TEXTURE2D_ARRAY(textureName)
-#define TEXTURECUBE_SHADOW(textureName)       TEXTURECUBE(textureName)
-#define TEXTURECUBE_ARRAY_SHADOW(textureName) TEXTURECUBE_ARRAY(textureName)
+#define <a name="TEXTURE2D_SHADOW">TEXTURE2D_SHADOW</a>(textureName)         TEXTURE2D(textureName)
+#define <a name="TEXTURE2D_ARRAY_SHADOW">TEXTURE2D_ARRAY_SHADOW</a>(textureName)   TEXTURE2D_ARRAY(textureName)
+#define <a name="TEXTURECUBE_SHADOW">TEXTURECUBE_SHADOW</a>(textureName)       TEXTURECUBE(textureName)
+#define <a name="TEXTURECUBE_ARRAY_SHADOW">TEXTURECUBE_ARRAY_SHADOW</a>(textureName) TEXTURECUBE_ARRAY(textureName)
 
-#define RW_TEXTURE2D(type, textureName)       RWTexture2D<type> textureName
-#define RW_TEXTURE2D_ARRAY(type, textureName) RWTexture2DArray<type> textureName
-#define RW_TEXTURE3D(type, textureName)       RWTexture3D<type> textureName
+#define <a name="RW_TEXTURE2D">RW_TEXTURE2D</a>(type, textureName)       RWTexture2D<type> textureName
+#define <a name="RW_TEXTURE2D_ARRAY">RW_TEXTURE2D_ARRAY</a>(type, textureName) RWTexture2DArray<type> textureName
+#define <a name="RW_TEXTURE3D">RW_TEXTURE3D</a>(type, textureName)       RWTexture3D<type> textureName
 
 #define <a name="SAMPLER">SAMPLER</a>(samplerName)                  SamplerState samplerName
 #define <a name="SAMPLER_CMP">SAMPLER_CMP</a>(samplerName)              SamplerComparisonState samplerName
 #define <a name="ASSIGN_SAMPLER">ASSIGN_SAMPLER</a>(samplerName, samplerValue) samplerName = samplerValue
 
 #define <a name="TEXTURE2D_PARAM">TEXTURE2D_PARAM</a>(textureName, samplerName)                 TEXTURE2D(textureName),         SAMPLER(samplerName)
-#define TEXTURE2D_ARRAY_PARAM(textureName, samplerName)           TEXTURE2D_ARRAY(textureName),   SAMPLER(samplerName)
-#define TEXTURECUBE_PARAM(textureName, samplerName)               TEXTURECUBE(textureName),       SAMPLER(samplerName)
-#define TEXTURECUBE_ARRAY_PARAM(textureName, samplerName)         TEXTURECUBE_ARRAY(textureName), SAMPLER(samplerName)
-#define TEXTURE3D_PARAM(textureName, samplerName)                 TEXTURE3D(textureName),         SAMPLER(samplerName)
+#define <a name="TEXTURE2D_ARRAY_PARAM">TEXTURE2D_ARRAY_PARAM</a>(textureName, samplerName)           TEXTURE2D_ARRAY(textureName),   SAMPLER(samplerName)
+#define <a name="TEXTURECUBE_PARAM">TEXTURECUBE_PARAM</a>(textureName, samplerName)               TEXTURECUBE(textureName),       SAMPLER(samplerName)
+#define <a name="TEXTURECUBE_ARRAY_PARAM">TEXTURECUBE_ARRAY_PARAM</a>(textureName, samplerName)         TEXTURECUBE_ARRAY(textureName), SAMPLER(samplerName)
+#define <a name="TEXTURE3D_PARAM">TEXTURE3D_PARAM</a>(textureName, samplerName)                 TEXTURE3D(textureName),         SAMPLER(samplerName)
 
-#define TEXTURE2D_SHADOW_PARAM(textureName, samplerName)          TEXTURE2D(textureName),         SAMPLER_CMP(samplerName)
-#define TEXTURE2D_ARRAY_SHADOW_PARAM(textureName, samplerName)    TEXTURE2D_ARRAY(textureName),   SAMPLER_CMP(samplerName)
-#define TEXTURECUBE_SHADOW_PARAM(textureName, samplerName)        TEXTURECUBE(textureName),       SAMPLER_CMP(samplerName)
-#define TEXTURECUBE_ARRAY_SHADOW_PARAM(textureName, samplerName)  TEXTURECUBE_ARRAY(textureName), SAMPLER_CMP(samplerName)
+#define <a name="TEXTURE2D_SHADOW_PARAM">TEXTURE2D_SHADOW_PARAM</a>(textureName, samplerName)          TEXTURE2D(textureName),         SAMPLER_CMP(samplerName)
+#define <a name="TEXTURE2D_ARRAY_SHADOW_PARAM">TEXTURE2D_ARRAY_SHADOW_PARAM</a>(textureName, samplerName)    TEXTURE2D_ARRAY(textureName),   SAMPLER_CMP(samplerName)
+#define <a name="TEXTURECUBE_SHADOW_PARAM">TEXTURECUBE_SHADOW_PARAM</a>(textureName, samplerName)        TEXTURECUBE(textureName),       SAMPLER_CMP(samplerName)
+#define <a name="TEXTURECUBE_ARRAY_SHADOW_PARAM">TEXTURECUBE_ARRAY_SHADOW_PARAM</a>(textureName, samplerName)  TEXTURECUBE_ARRAY(textureName), SAMPLER_CMP(samplerName)
 
 #define <a name="TEXTURE2D_ARGS">TEXTURE2D_ARGS</a>(textureName, samplerName)                textureName, samplerName
-#define TEXTURE2D_ARRAY_ARGS(textureName, samplerName)          textureName, samplerName
-#define TEXTURECUBE_ARGS(textureName, samplerName)              textureName, samplerName
-#define TEXTURECUBE_ARRAY_ARGS(textureName, samplerName)        textureName, samplerName
-#define TEXTURE3D_ARGS(textureName, samplerName)                textureName, samplerName
+#define <a name="TEXTURE2D_ARRAY_ARGS">TEXTURE2D_ARRAY_ARGS</a>(textureName, samplerName)          textureName, samplerName
+#define <a name="TEXTURECUBE_ARGS">TEXTURECUBE_ARGS</a>(textureName, samplerName)              textureName, samplerName
+#define <a name="TEXTURECUBE_ARRAY_ARGS">TEXTURECUBE_ARRAY_ARGS</a>(textureName, samplerName)        textureName, samplerName
+#define <a name="TEXTURE3D_ARGS">TEXTURE3D_ARGS</a>(textureName, samplerName)                textureName, samplerName
 
-#define TEXTURE2D_SHADOW_ARGS(textureName, samplerName)         textureName, samplerName
-#define TEXTURE2D_ARRAY_SHADOW_ARGS(textureName, samplerName)   textureName, samplerName
-#define TEXTURECUBE_SHADOW_ARGS(textureName, samplerName)       textureName, samplerName
-#define TEXTURECUBE_ARRAY_SHADOW_ARGS(textureName, samplerName) textureName, samplerName
+#define <a name="TEXTURE2D_SHADOW_ARGS">TEXTURE2D_SHADOW_ARGS</a>(textureName, samplerName)         textureName, samplerName
+#define <a name="TEXTURE2D_ARRAY_SHADOW_ARGS">TEXTURE2D_ARRAY_SHADOW_ARGS</a>(textureName, samplerName)   textureName, samplerName
+#define <a name="TEXTURECUBE_SHADOW_ARGS">TEXTURECUBE_SHADOW_ARGS</a>(textureName, samplerName)       textureName, samplerName
+#define <a name="TEXTURECUBE_ARRAY_SHADOW_ARGS">TEXTURECUBE_ARRAY_SHADOW_ARGS</a>(textureName, samplerName) textureName, samplerName
 
 #define <a name="SAMPLE_TEXTURE2D">SAMPLE_TEXTURE2D</a>(textureName, samplerName, coord2)                               textureName.Sample(samplerName, coord2)
 #define <a name="SAMPLE_TEXTURE2D_LOD">SAMPLE_TEXTURE2D_LOD</a>(textureName, samplerName, coord2, lod)                      textureName.SampleLevel(samplerName, coord2, lod)
-#define SAMPLE_TEXTURE2D_BIAS(textureName, samplerName, coord2, bias)                    textureName.SampleBias(samplerName, coord2, bias)
-#define SAMPLE_TEXTURE2D_GRAD(textureName, samplerName, coord2, dpdx, dpdy)              textureName.SampleGrad(samplerName, coord2, dpdx, dpdy)
-#define SAMPLE_TEXTURE2D_ARRAY(textureName, samplerName, coord2, index)                  textureName.Sample(samplerName, float3(coord2, index))
-#define SAMPLE_TEXTURE2D_ARRAY_LOD(textureName, samplerName, coord2, index, lod)         textureName.SampleLevel(samplerName, float3(coord2, index), lod)
-#define SAMPLE_TEXTURE2D_ARRAY_BIAS(textureName, samplerName, coord2, index, bias)       textureName.SampleBias(samplerName, float3(coord2, index), bias)
-#define SAMPLE_TEXTURE2D_ARRAY_GRAD(textureName, samplerName, coord2, index, dpdx, dpdy) textureName.SampleGrad(samplerName, float3(coord2, index), dpdx, dpdy)
-#define SAMPLE_TEXTURECUBE(textureName, samplerName, coord3)                             textureName.Sample(samplerName, coord3)
-#define SAMPLE_TEXTURECUBE_LOD(textureName, samplerName, coord3, lod)                    textureName.SampleLevel(samplerName, coord3, lod)
-#define SAMPLE_TEXTURECUBE_BIAS(textureName, samplerName, coord3, bias)                  textureName.SampleBias(samplerName, coord3, bias)
-#define SAMPLE_TEXTURECUBE_ARRAY(textureName, samplerName, coord3, index)                textureName.Sample(samplerName, float4(coord3, index))
-#define SAMPLE_TEXTURECUBE_ARRAY_LOD(textureName, samplerName, coord3, index, lod)       textureName.SampleLevel(samplerName, float4(coord3, index), lod)
-#define SAMPLE_TEXTURECUBE_ARRAY_BIAS(textureName, samplerName, coord3, index, bias)     textureName.SampleBias(samplerName, float4(coord3, index), bias)
+#define <a name="SAMPLE_TEXTURE2D_BIAS">SAMPLE_TEXTURE2D_BIAS</a>(textureName, samplerName, coord2, bias)                    textureName.SampleBias(samplerName, coord2, bias)
+#define <a name="SAMPLE_TEXTURE2D_GRAD">SAMPLE_TEXTURE2D_GRAD</a>(textureName, samplerName, coord2, dpdx, dpdy)              textureName.SampleGrad(samplerName, coord2, dpdx, dpdy)
+#define <a name="SAMPLE_TEXTURE2D_ARRAY">SAMPLE_TEXTURE2D_ARRAY</a>(textureName, samplerName, coord2, index)                  textureName.Sample(samplerName, float3(coord2, index))
+#define <a name="SAMPLE_TEXTURE2D_ARRAY_LOD">SAMPLE_TEXTURE2D_ARRAY_LOD</a>(textureName, samplerName, coord2, index, lod)         textureName.SampleLevel(samplerName, float3(coord2, index), lod)
+#define <a name="SAMPLE_TEXTURE2D_ARRAY_BIAS">SAMPLE_TEXTURE2D_ARRAY_BIAS</a>(textureName, samplerName, coord2, index, bias)       textureName.SampleBias(samplerName, float3(coord2, index), bias)
+#define <a name="SAMPLE_TEXTURE2D_ARRAY_GRAD">SAMPLE_TEXTURE2D_ARRAY_GRAD</a>(textureName, samplerName, coord2, index, dpdx, dpdy) textureName.SampleGrad(samplerName, float3(coord2, index), dpdx, dpdy)
+#define <a name="SAMPLE_TEXTURECUBE">SAMPLE_TEXTURECUBE</a>(textureName, samplerName, coord3)                             textureName.Sample(samplerName, coord3)
+#define <a name="SAMPLE_TEXTURECUBE_LOD">SAMPLE_TEXTURECUBE_LOD</a>(textureName, samplerName, coord3, lod)                    textureName.SampleLevel(samplerName, coord3, lod)
+#define <a name="SAMPLE_TEXTURECUBE_BIAS">SAMPLE_TEXTURECUBE_BIAS</a>(textureName, samplerName, coord3, bias)                  textureName.SampleBias(samplerName, coord3, bias)
+#define <a name="SAMPLE_TEXTURECUBE_ARRAY">SAMPLE_TEXTURECUBE_ARRAY</a>(textureName, samplerName, coord3, index)                textureName.Sample(samplerName, float4(coord3, index))
+#define <a name="SAMPLE_TEXTURECUBE_ARRAY_LOD">SAMPLE_TEXTURECUBE_ARRAY_LOD</a>(textureName, samplerName, coord3, index, lod)       textureName.SampleLevel(samplerName, float4(coord3, index), lod)
+#define <a name="SAMPLE_TEXTURECUBE_ARRAY_BIAS">SAMPLE_TEXTURECUBE_ARRAY_BIAS</a>(textureName, samplerName, coord3, index, bias)     textureName.SampleBias(samplerName, float4(coord3, index), bias)
 #define <a name="SAMPLE_TEXTURE3D">SAMPLE_TEXTURE3D</a>(textureName, samplerName, coord3)                               textureName.Sample(samplerName, coord3)
-#define SAMPLE_TEXTURE3D_LOD(textureName, samplerName, coord3, lod)                      textureName.SampleLevel(samplerName, coord3, lod)
+#define <a name="SAMPLE_TEXTURE3D_LOD">SAMPLE_TEXTURE3D_LOD</a>(textureName, samplerName, coord3, lod)                      textureName.SampleLevel(samplerName, coord3, lod)
 
-#define SAMPLE_TEXTURE2D_SHADOW(textureName, samplerName, coord3)                    textureName.SampleCmpLevelZero(samplerName, (coord3).xy, (coord3).z)
-#define SAMPLE_TEXTURE2D_ARRAY_SHADOW(textureName, samplerName, coord3, index)       textureName.SampleCmpLevelZero(samplerName, float3((coord3).xy, index), (coord3).z)
-#define SAMPLE_TEXTURECUBE_SHADOW(textureName, samplerName, coord4)                  textureName.SampleCmpLevelZero(samplerName, (coord4).xyz, (coord4).w)
-#define SAMPLE_TEXTURECUBE_ARRAY_SHADOW(textureName, samplerName, coord4, index)     textureName.SampleCmpLevelZero(samplerName, float4((coord4).xyz, index), (coord4).w)
+#define <a name="SAMPLE_TEXTURE2D_SHADOW">SAMPLE_TEXTURE2D_SHADOW</a>(textureName, samplerName, coord3)                    textureName.SampleCmpLevelZero(samplerName, (coord3).xy, (coord3).z)
+#define <a name="SAMPLE_TEXTURE2D_ARRAY_SHADOW">SAMPLE_TEXTURE2D_ARRAY_SHADOW</a>(textureName, samplerName, coord3, index)       textureName.SampleCmpLevelZero(samplerName, float3((coord3).xy, index), (coord3).z)
+#define <a name="SAMPLE_TEXTURECUBE_SHADOW">SAMPLE_TEXTURECUBE_SHADOW</a>(textureName, samplerName, coord4)                  textureName.SampleCmpLevelZero(samplerName, (coord4).xyz, (coord4).w)
+#define <a name="SAMPLE_TEXTURECUBE_ARRAY_SHADOW">SAMPLE_TEXTURECUBE_ARRAY_SHADOW</a>(textureName, samplerName, coord4, index)     textureName.SampleCmpLevelZero(samplerName, float4((coord4).xyz, index), (coord4).w)
 
 #define <a name="SAMPLE_DEPTH_TEXTURE">SAMPLE_DEPTH_TEXTURE</a>(textureName, samplerName, coord2)          SAMPLE_TEXTURE2D(textureName, samplerName, coord2).r
 #define <a name="SAMPLE_DEPTH_TEXTURE_LOD">SAMPLE_DEPTH_TEXTURE_LOD</a>(textureName, samplerName, coord2, lod) SAMPLE_TEXTURE2D_LOD(textureName, samplerName, coord2, lod).r
 
 #define <a name="LOAD_TEXTURE2D">LOAD_TEXTURE2D</a>(textureName, unCoord2)                                   textureName.Load(int3(unCoord2, 0))
-#define LOAD_TEXTURE2D_LOD(textureName, unCoord2, lod)                          textureName.Load(int3(unCoord2, lod))
-#define LOAD_TEXTURE2D_MSAA(textureName, unCoord2, sampleIndex)                 textureName.Load(unCoord2, sampleIndex)
-#define LOAD_TEXTURE2D_ARRAY(textureName, unCoord2, index)                      textureName.Load(int4(unCoord2, index, 0))
-#define LOAD_TEXTURE2D_ARRAY_MSAA(textureName, unCoord2, index, sampleIndex)    textureName.Load(int3(unCoord2, index), sampleIndex)
-#define LOAD_TEXTURE2D_ARRAY_LOD(textureName, unCoord2, index, lod)             textureName.Load(int4(unCoord2, index, lod))
-#define LOAD_TEXTURE3D(textureName, unCoord3)                                   textureName.Load(int4(unCoord3, 0))
-#define LOAD_TEXTURE3D_LOD(textureName, unCoord3, lod)                          textureName.Load(int4(unCoord3, lod))
+#define <a name="LOAD_TEXTURE2D_LOD">LOAD_TEXTURE2D_LOD</a>(textureName, unCoord2, lod)                          textureName.Load(int3(unCoord2, lod))
+#define <a name="LOAD_TEXTURE2D_MSAA">LOAD_TEXTURE2D_MSAA</a>(textureName, unCoord2, sampleIndex)                 textureName.Load(unCoord2, sampleIndex)
+#define <a name="LOAD_TEXTURE2D_ARRAY">LOAD_TEXTURE2D_ARRAY</a>(textureName, unCoord2, index)                      textureName.Load(int4(unCoord2, index, 0))
+#define <a name="LOAD_TEXTURE2D_ARRAY_MSAA">LOAD_TEXTURE2D_ARRAY_MSAA</a>(textureName, unCoord2, index, sampleIndex)    textureName.Load(int3(unCoord2, index), sampleIndex)
+#define <a name="LOAD_TEXTURE2D_ARRAY_LOD">LOAD_TEXTURE2D_ARRAY_LOD</a>(textureName, unCoord2, index, lod)             textureName.Load(int4(unCoord2, index, lod))
+#define <a name="LOAD_TEXTURE3D">LOAD_TEXTURE3D</a>(textureName, unCoord3)                                   textureName.Load(int4(unCoord3, 0))
+#define <a name="LOAD_TEXTURE3D_LOD">LOAD_TEXTURE3D_LOD</a>(textureName, unCoord3, lod)                          textureName.Load(int4(unCoord3, lod))
 
-#define PLATFORM_SUPPORT_GATHER
+#define <a name="PLATFORM_SUPPORT_GATHER">PLATFORM_SUPPORT_GATHER</a>
 #define <a name="GATHER_TEXTURE2D">GATHER_TEXTURE2D</a>(textureName, samplerName, coord2)                textureName.Gather(samplerName, coord2)
-#define GATHER_TEXTURE2D_ARRAY(textureName, samplerName, coord2, index)   textureName.Gather(samplerName, float3(coord2, index))
-#define GATHER_TEXTURECUBE(textureName, samplerName, coord3)              textureName.Gather(samplerName, coord3)
-#define GATHER_TEXTURECUBE_ARRAY(textureName, samplerName, coord3, index) textureName.Gather(samplerName, float4(coord3, index))
-#define GATHER_RED_TEXTURE2D(textureName, samplerName, coord2)            textureName.GatherRed(samplerName, coord2)
-#define GATHER_GREEN_TEXTURE2D(textureName, samplerName, coord2)          textureName.GatherGreen(samplerName, coord2)
-#define GATHER_BLUE_TEXTURE2D(textureName, samplerName, coord2)           textureName.GatherBlue(samplerName, coord2)
-#define GATHER_ALPHA_TEXTURE2D(textureName, samplerName, coord2)          textureName.GatherAlpha(samplerName, coord2)
+#define <a name="GATHER_TEXTURE2D_ARRAY">GATHER_TEXTURE2D_ARRAY</a>(textureName, samplerName, coord2, index)   textureName.Gather(samplerName, float3(coord2, index))
+#define <a name="GATHER_TEXTURECUBE">GATHER_TEXTURECUBE</a>(textureName, samplerName, coord3)              textureName.Gather(samplerName, coord3)
+#define <a name="GATHER_TEXTURECUBE_ARRAY">GATHER_TEXTURECUBE_ARRAY</a>(textureName, samplerName, coord3, index) textureName.Gather(samplerName, float4(coord3, index))
+#define <a name="GATHER_RED_TEXTURE2D">GATHER_RED_TEXTURE2D</a>(textureName, samplerName, coord2)            textureName.GatherRed(samplerName, coord2)
+#define <a name="GATHER_GREEN_TEXTURE2D">GATHER_GREEN_TEXTURE2D</a>(textureName, samplerName, coord2)          textureName.GatherGreen(samplerName, coord2)
+#define <a name="GATHER_BLUE_TEXTURE2D">GATHER_BLUE_TEXTURE2D</a>(textureName, samplerName, coord2)           textureName.GatherBlue(samplerName, coord2)
+#define <a name="GATHER_ALPHA_TEXTURE2D">GATHER_ALPHA_TEXTURE2D</a>(textureName, samplerName, coord2)          textureName.GatherAlpha(samplerName, coord2)
 </pre>
 <script src="https://xibanya.github.io/URPShaderViewer/Scripts/run_prettify.js?skin=vscode"></script>
 <script src="https://xibanya.github.io/URPShaderViewer/Scripts/link_definitions.js"></script>

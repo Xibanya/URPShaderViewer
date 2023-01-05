@@ -136,12 +136,12 @@
 #define real4x3 float4x3
 #define real4x4 float4x4
 
-#define REAL_MIN FLT_MIN
-#define REAL_MAX FLT_MAX
-#define REAL_EPS FLT_EPS
-#define TEMPLATE_1_REAL TEMPLATE_1_FLT
-#define TEMPLATE_2_REAL TEMPLATE_2_FLT
-#define TEMPLATE_3_REAL TEMPLATE_3_FLT
+#define <a name="REAL_MIN">REAL_MIN</a> FLT_MIN
+#define <a name="REAL_MAX">REAL_MAX</a> <a href="/URPShaderViewer/Library/Core/Macros.html#FLT_MAX">FLT_MAX</a>
+#define <a name="REAL_EPS">REAL_EPS</a> FLT_EPS
+#define <a name="TEMPLATE_1_REAL">TEMPLATE_1_REAL</a> TEMPLATE_1_FLT
+#define <a name="TEMPLATE_2_REAL">TEMPLATE_2_REAL</a> TEMPLATE_2_FLT
+#define <a name="TEMPLATE_3_REAL">TEMPLATE_3_REAL</a> TEMPLATE_3_FLT
 
 #endif // REAL_IS_HALF
 
@@ -152,7 +152,7 @@
 #ifdef  SHADER_STAGE_COMPUTE
 #   ifndef SHADER_TARGET
 #       if defined(SHADER_API_METAL)
-#       define SHADER_TARGET 45
+#       define <a name="SHADER_TARGET">SHADER_TARGET</a> 45
 #       else
 #       define SHADER_TARGET 50
 #       endif
@@ -277,7 +277,7 @@ void <a name="ToggleBit">ToggleBit</a>(inout uint data, uint offset)
 
 #ifndef INTRINSIC_WAVEREADFIRSTLANE
     // Warning: for correctness, the argument's value must be the same across all lanes of the wave.
-    TEMPLATE_1_REAL(WaveReadLaneFirst, scalarValue, return scalarValue)
+    TEMPLATE_1_REAL(<a name="WaveReadLaneFirst">WaveReadLaneFirst</a>, scalarValue, return scalarValue)
     TEMPLATE_1_INT(WaveReadLaneFirst, scalarValue, return scalarValue)
 #endif
 
@@ -290,13 +290,13 @@ void <a name="ToggleBit">ToggleBit</a>(inout uint data, uint offset)
 #endif // INTRINSIC_MAD24
 
 #ifndef INTRINSIC_MINMAX3
-    TEMPLATE_3_REAL(Min3, a, b, c, return min(min(a, b), c))
+    TEMPLATE_3_REAL(<a name="Min3">Min3</a>, a, b, c, return min(min(a, b), c))
     TEMPLATE_3_INT(Min3, a, b, c, return min(min(a, b), c))
-    TEMPLATE_3_REAL(Max3, a, b, c, return max(max(a, b), c))
+    TEMPLATE_3_REAL(<a name="Max3">Max3</a>, a, b, c, return max(max(a, b), c))
     TEMPLATE_3_INT(Max3, a, b, c, return max(max(a, b), c))
 #endif // INTRINSIC_MINMAX3
 
-TEMPLATE_3_REAL(Avg3, a, b, c, return (a + b + c) * 0.33333333)
+TEMPLATE_3_REAL(<a name="Avg3">Avg3</a>, a, b, c, return (a + b + c) * 0.33333333)
 
 #ifndef INTRINSIC_QUAD_SHUFFLE
     // Important! Only valid in pixel shaders!
@@ -320,14 +320,14 @@ TEMPLATE_3_REAL(Avg3, a, b, c, return (a + b + c) * 0.33333333)
     }
 #endif
 
-TEMPLATE_SWAP(Swap) // Define a Swap(a, b) function for all types
+TEMPLATE_SWAP(<a name="Swap">Swap</a>) // Define a Swap(a, b) function for all types
 
-#define CUBEMAPFACE_POSITIVE_X 0
-#define CUBEMAPFACE_NEGATIVE_X 1
-#define CUBEMAPFACE_POSITIVE_Y 2
-#define CUBEMAPFACE_NEGATIVE_Y 3
-#define CUBEMAPFACE_POSITIVE_Z 4
-#define CUBEMAPFACE_NEGATIVE_Z 5
+#define <a name="CUBEMAPFACE_POSITIVE_X">CUBEMAPFACE_POSITIVE_X</a> 0
+#define <a name="CUBEMAPFACE_NEGATIVE_X">CUBEMAPFACE_NEGATIVE_X</a> 1
+#define <a name="CUBEMAPFACE_POSITIVE_Y">CUBEMAPFACE_POSITIVE_Y</a> 2
+#define <a name="CUBEMAPFACE_NEGATIVE_Y">CUBEMAPFACE_NEGATIVE_Y</a> 3
+#define <a name="CUBEMAPFACE_POSITIVE_Z">CUBEMAPFACE_POSITIVE_Z</a> 4
+#define <a name="CUBEMAPFACE_NEGATIVE_Z">CUBEMAPFACE_NEGATIVE_Z</a> 5
 
 #ifndef INTRINSIC_CUBEMAP_FACE_ID
 float <a name="CubeMapFaceID">CubeMapFaceID</a>(float3 dir)
@@ -430,7 +430,7 @@ real <a name="RadToDeg">RadToDeg</a>(real rad)
 }
 
 // Square functions for cleaner code
-TEMPLATE_1_REAL(Sq, x, return (x) * (x))
+TEMPLATE_1_REAL(<a name="Sq">Sq</a>, x, return (x) * (x))
 TEMPLATE_1_INT(Sq, x, return (x) * (x))
 
 bool <a name="IsPower2">IsPower2</a>(uint x)
@@ -501,7 +501,7 @@ uint <a name="FastLog2">FastLog2</a>(uint x)
 // "pow(f, e) will not work for negative f, use abs(f) or conditionally handle negative values if you expect them"
 // PositivePow remove this warning when you know the value is positive or 0 and avoid inf/NAN.
 // Note: https://msdn.microsoft.com/en-us/library/windows/desktop/bb509636(v=vs.85).aspx pow(0, >0) == 0
-TEMPLATE_2_REAL(PositivePow, base, power, return pow(abs(base), power))
+TEMPLATE_2_REAL(<a name="PositivePow">PositivePow</a>, base, power, return pow(abs(base), power))
 
 // SafePositivePow: Same as pow(x,y) but considers x always positive and never exactly 0 such that
 // SafePositivePow(0,y) will numerically converge to 1 as y -> 0, including SafePositivePow(0,0) returning 1.
@@ -534,11 +534,11 @@ TEMPLATE_2_REAL(PositivePow, base, power, return pow(abs(base), power))
 //        for behavior depending on pow(0, y) giving always 0, especially for 0 < y < 1.
 //
 // Ref: https://msdn.microsoft.com/en-us/library/windows/desktop/bb509636(v=vs.85).aspx
-TEMPLATE_2_REAL(SafePositivePow, base, power, return pow(max(abs(base), real(REAL_EPS)), power))
+TEMPLATE_2_REAL(<a name="SafePositivePow">SafePositivePow</a>, base, power, return pow(max(abs(base), real(REAL_EPS)), power))
 
 // Helpers for making shadergraph functions consider precision spec through the same $precision token used for variable types
-TEMPLATE_2_FLT(SafePositivePow_float, base, power, return pow(max(abs(base), float(FLT_EPS)), power))
-TEMPLATE_2_HALF(SafePositivePow_half, base, power, return pow(max(abs(base), half(HALF_EPS)), power))
+TEMPLATE_2_FLT(<a name="SafePositivePow_float">SafePositivePow_float</a>, base, power, return pow(max(abs(base), float(FLT_EPS)), power))
+TEMPLATE_2_HALF(<a name="SafePositivePow_half">SafePositivePow_half</a>, base, power, return pow(max(abs(base), half(HALF_EPS)), power))
 
 float <a name="Eps_float">Eps_float</a>() { return FLT_EPS; }
 float <a name="Min_float">Min_float</a>() { return FLT_MIN; }
@@ -591,10 +591,10 @@ real3 <a name="Orthonormalize">Orthonormalize</a>(real3 tangent, real3 normal)
 }
 
 // [start, end] -> [0, 1] : (x - start) / (end - start) = x * rcpLength - (start * rcpLength)
-TEMPLATE_3_REAL(Remap01, x, rcpLength, startTimesRcpLength, return saturate(x * rcpLength - startTimesRcpLength))
+TEMPLATE_3_REAL(<a name="Remap01">Remap01</a>, x, rcpLength, startTimesRcpLength, return saturate(x * rcpLength - startTimesRcpLength))
 
 // [start, end] -> [1, 0] : (end - x) / (end - start) = (end * rcpLength) - x * rcpLength
-TEMPLATE_3_REAL(Remap10, x, rcpLength, endTimesRcpLength, return saturate(endTimesRcpLength - x * rcpLength))
+TEMPLATE_3_REAL(<a name="Remap10">Remap10</a>, x, rcpLength, endTimesRcpLength, return saturate(endTimesRcpLength - x * rcpLength))
 
 // Remap: [0.5 / size, 1 - 0.5 / size] -> [0, 1]
 real2 <a name="RemapHalfTexelCoordTo01">RemapHalfTexelCoordTo01</a>(real2 coord, real2 size)
@@ -647,7 +647,7 @@ real <a name="Pow4">Pow4</a>(real x)
     return (x * x) * (x * x);
 }
 
-TEMPLATE_3_FLT(RangeRemap, min, max, t, return saturate((t - min) / (max - min)))
+TEMPLATE_3_FLT(<a name="RangeRemap">RangeRemap</a>, min, max, t, return saturate((t - min) / (max - min)))
 
 // ----------------------------------------------------------------------------
 // Texture utilities
