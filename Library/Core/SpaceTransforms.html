@@ -212,7 +212,7 @@ real3 <a name="TransformWorldToTangent">TransformWorldToTangent</a>(real3 dirWS,
     float3 col2 = cross(row0, row1);
 
     float determinant = dot(row0, col0);
-    float sgn = determinant<0.0 ? (-1.0) : 1.0;
+    float sgn = determinant < 0.0 ? (-1.0) : 1.0;
 
     // inverse transposed but scaled by determinant
     // Will remove transpose part by using matrix as the first arg in the mul() below
