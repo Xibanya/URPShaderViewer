@@ -181,7 +181,7 @@
                     // way we calculate the stereo eye index,  we can help the shader compiler to avoid
                     // emitting the bitfieldInsert function and thereby increase the number of devices we
                     // can run stereo instancing on.
-                    <a name="unity_StereoEyeIndex">unity_StereoEyeIndex</pre> = round(fmod(inputInstanceID, 2.0));
+                    <a name="unity_StereoEyeIndex">unity_StereoEyeIndex</a> = round(fmod(inputInstanceID, 2.0));
                     unity_InstanceID = unity_BaseInstanceID + (inputInstanceID >> 1);
                 #else
                     // stereo eye index is automatically figured out from the instance ID
